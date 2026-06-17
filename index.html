@@ -17,9 +17,7 @@
 <header class="header">
   <div class="wrap nav">
     <a href="#" class="logo" aria-label="ООО Заряд">
-      <!-- Логотип как на исходном сайте. Скачайте файл в images/zaryad-logo.jpg
-           и замените src на images/zaryad-logo.jpg, чтобы сайт был автономным. -->
-      <img src="https://zaryad67.ru/wp-content/uploads/2026/03/Zaryad-logo.jpg"
+      <img src="images/zaryad-logo.jpg"
            alt="ООО Заряд"
            onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" />
       <span class="logo-fallback" style="display:none">ЗА<b>РЯД</b></span>
@@ -70,6 +68,150 @@
         <span><i class="dot"></i> Допуск <b>СРО</b></span>
         <span><i class="dot"></i> Работаем по <b>44-ФЗ / 223-ФЗ</b></span>
         <span><i class="dot"></i> Гарантия до <b>36 месяцев</b></span>
+      </div>
+    </div>
+
+    <div class="hero-visual reveal">
+      <div class="scene">
+        <svg viewBox="0 0 480 420" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <linearGradient id="vSky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#06101F"/>
+              <stop offset="100%" stop-color="#0F2848"/>
+            </linearGradient>
+            <linearGradient id="vRoad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#182235"/>
+              <stop offset="100%" stop-color="#0D1622"/>
+            </linearGradient>
+            <linearGradient id="vCone1" x1="0" y1="170" x2="0" y2="305" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#FFD060" stop-opacity="0.55"/>
+              <stop offset="100%" stop-color="#FFD060" stop-opacity="0.04"/>
+            </linearGradient>
+            <linearGradient id="vCone2" x1="0" y1="180" x2="0" y2="305" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#FFD060" stop-opacity="0.5"/>
+              <stop offset="100%" stop-color="#FFD060" stop-opacity="0.04"/>
+            </linearGradient>
+            <radialGradient id="vLamp">
+              <stop offset="0%" stop-color="#FFFDE8"/>
+              <stop offset="35%" stop-color="#FFE566"/>
+              <stop offset="100%" stop-color="#FFD060" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+
+          <!-- Небо -->
+          <rect width="480" height="420" fill="url(#vSky)"/>
+
+          <!-- Звёзды -->
+          <circle cx="38" cy="30" r="1.2" fill="#fff" opacity="0.8"/>
+          <circle cx="90" cy="18" r="0.8" fill="#fff" opacity="0.6"/>
+          <circle cx="145" cy="42" r="1.0" fill="#fff" opacity="0.7"/>
+          <circle cx="220" cy="24" r="0.9" fill="#fff" opacity="0.5"/>
+          <circle cx="268" cy="52" r="0.7" fill="#fff" opacity="0.4"/>
+          <circle cx="322" cy="16" r="1.1" fill="#fff" opacity="0.8"/>
+          <circle cx="378" cy="36" r="0.9" fill="#fff" opacity="0.6"/>
+          <circle cx="430" cy="22" r="1.0" fill="#fff" opacity="0.7"/>
+          <circle cx="462" cy="48" r="0.8" fill="#fff" opacity="0.5"/>
+          <circle cx="65" cy="65" r="0.6" fill="#fff" opacity="0.4"/>
+          <circle cx="185" cy="70" r="0.8" fill="#fff" opacity="0.5"/>
+          <circle cx="350" cy="68" r="0.7" fill="#fff" opacity="0.4"/>
+
+          <!-- Луна -->
+          <circle cx="435" cy="62" r="22" fill="#C8B85A" opacity="0.85"/>
+          <circle cx="448" cy="56" r="20" fill="#06101F"/>
+
+          <!-- Здание A — высокое, слева -->
+          <rect x="8" y="130" width="62" height="175" fill="#0D1F38" rx="2"/>
+          <rect x="17" y="147" width="9" height="7" fill="#FFD060" opacity="0.45" rx="1"/>
+          <rect x="33" y="147" width="9" height="7" fill="#4B7FD8" opacity="0.4" rx="1"/>
+          <rect x="49" y="147" width="9" height="7" fill="#FFD060" opacity="0.3" rx="1"/>
+          <rect x="17" y="164" width="9" height="7" fill="#4B7FD8" opacity="0.35" rx="1"/>
+          <rect x="49" y="164" width="9" height="7" fill="#FFD060" opacity="0.45" rx="1"/>
+          <rect x="17" y="181" width="9" height="7" fill="#FFD060" opacity="0.5" rx="1"/>
+          <rect x="33" y="181" width="9" height="7" fill="#4B7FD8" opacity="0.3" rx="1"/>
+          <rect x="17" y="198" width="9" height="7" fill="#4B7FD8" opacity="0.4" rx="1"/>
+          <rect x="33" y="198" width="9" height="7" fill="#FFD060" opacity="0.4" rx="1"/>
+          <rect x="49" y="198" width="9" height="7" fill="#FFD060" opacity="0.3" rx="1"/>
+          <rect x="17" y="215" width="9" height="7" fill="#FFD060" opacity="0.35" rx="1"/>
+          <rect x="49" y="215" width="9" height="7" fill="#4B7FD8" opacity="0.4" rx="1"/>
+          <rect x="33" y="232" width="9" height="7" fill="#FFD060" opacity="0.4" rx="1"/>
+
+          <!-- Здание B — среднее, слева -->
+          <rect x="80" y="175" width="72" height="130" fill="#0C1C35" rx="2"/>
+          <rect x="90" y="190" width="8" height="6" fill="#FFD060" opacity="0.5" rx="1"/>
+          <rect x="106" y="190" width="8" height="6" fill="#4B7FD8" opacity="0.35" rx="1"/>
+          <rect x="132" y="190" width="8" height="6" fill="#FFD060" opacity="0.4" rx="1"/>
+          <rect x="90" y="205" width="8" height="6" fill="#4B7FD8" opacity="0.4" rx="1"/>
+          <rect x="118" y="205" width="8" height="6" fill="#FFD060" opacity="0.45" rx="1"/>
+          <rect x="90" y="220" width="8" height="6" fill="#FFD060" opacity="0.4" rx="1"/>
+          <rect x="106" y="220" width="8" height="6" fill="#4B7FD8" opacity="0.3" rx="1"/>
+          <rect x="90" y="235" width="8" height="6" fill="#4B7FD8" opacity="0.35" rx="1"/>
+          <rect x="132" y="235" width="8" height="6" fill="#FFD060" opacity="0.4" rx="1"/>
+
+          <!-- Здание C — среднее, справа -->
+          <rect x="328" y="175" width="75" height="130" fill="#0C1C35" rx="2"/>
+          <rect x="338" y="190" width="8" height="6" fill="#FFD060" opacity="0.5" rx="1"/>
+          <rect x="356" y="190" width="8" height="6" fill="#4B7FD8" opacity="0.35" rx="1"/>
+          <rect x="382" y="190" width="8" height="6" fill="#FFD060" opacity="0.4" rx="1"/>
+          <rect x="338" y="205" width="8" height="6" fill="#4B7FD8" opacity="0.4" rx="1"/>
+          <rect x="370" y="205" width="8" height="6" fill="#FFD060" opacity="0.45" rx="1"/>
+          <rect x="394" y="205" width="8" height="6" fill="#4B7FD8" opacity="0.3" rx="1"/>
+          <rect x="338" y="220" width="8" height="6" fill="#FFD060" opacity="0.4" rx="1"/>
+          <rect x="356" y="220" width="8" height="6" fill="#4B7FD8" opacity="0.3" rx="1"/>
+          <rect x="338" y="235" width="8" height="6" fill="#4B7FD8" opacity="0.35" rx="1"/>
+          <rect x="382" y="235" width="8" height="6" fill="#FFD060" opacity="0.4" rx="1"/>
+
+          <!-- Здание D — высокое, справа -->
+          <rect x="413" y="130" width="67" height="175" fill="#0D1F38" rx="2"/>
+          <rect x="423" y="147" width="9" height="7" fill="#FFD060" opacity="0.45" rx="1"/>
+          <rect x="439" y="147" width="9" height="7" fill="#4B7FD8" opacity="0.4" rx="1"/>
+          <rect x="455" y="147" width="9" height="7" fill="#FFD060" opacity="0.3" rx="1"/>
+          <rect x="423" y="164" width="9" height="7" fill="#4B7FD8" opacity="0.35" rx="1"/>
+          <rect x="455" y="164" width="9" height="7" fill="#FFD060" opacity="0.4" rx="1"/>
+          <rect x="423" y="181" width="9" height="7" fill="#FFD060" opacity="0.5" rx="1"/>
+          <rect x="439" y="181" width="9" height="7" fill="#4B7FD8" opacity="0.3" rx="1"/>
+          <rect x="423" y="198" width="9" height="7" fill="#4B7FD8" opacity="0.4" rx="1"/>
+          <rect x="455" y="198" width="9" height="7" fill="#FFD060" opacity="0.35" rx="1"/>
+          <rect x="439" y="215" width="9" height="7" fill="#FFD060" opacity="0.4" rx="1"/>
+          <rect x="423" y="232" width="9" height="7" fill="#4B7FD8" opacity="0.35" rx="1"/>
+
+          <!-- Дорога -->
+          <rect x="0" y="305" width="480" height="115" fill="url(#vRoad)"/>
+          <rect x="0" y="303" width="480" height="4" fill="#1C3050"/>
+          <rect x="40"  y="377" width="42" height="5" fill="#243650" rx="2"/>
+          <rect x="118" y="377" width="42" height="5" fill="#243650" rx="2"/>
+          <rect x="196" y="377" width="42" height="5" fill="#243650" rx="2"/>
+          <rect x="274" y="377" width="42" height="5" fill="#243650" rx="2"/>
+          <rect x="352" y="377" width="42" height="5" fill="#243650" rx="2"/>
+          <rect x="430" y="377" width="42" height="5" fill="#243650" rx="2"/>
+
+          <!-- Фонарь 1 (слева) -->
+          <rect x="152" y="187" width="5" height="118" fill="#1A3A5E" rx="2"/>
+          <path d="M155 188 C158 174 170 167 186 165" fill="none" stroke="#1A3A5E" stroke-width="3.5" stroke-linecap="round"/>
+          <rect x="177" y="160" width="28" height="11" fill="#22405E" rx="3"/>
+          <rect x="179" y="168" width="24" height="5" fill="#182E48" rx="2"/>
+          <ellipse cx="191" cy="164" rx="10" ry="5" fill="url(#vLamp)"/>
+          <circle cx="191" cy="164" r="28" fill="#FFD060" opacity="0.07"/>
+          <path d="M183 170 L95 307 L287 307 L199 170 Z" fill="url(#vCone1)"/>
+          <ellipse cx="191" cy="340" rx="82" ry="18" fill="#FFD060" opacity="0.2"/>
+
+          <!-- Фонарь 2 (справа) -->
+          <rect x="323" y="197" width="5" height="108" fill="#1A3A5E" rx="2"/>
+          <path d="M325 198 C322 184 310 177 294 175" fill="none" stroke="#1A3A5E" stroke-width="3.5" stroke-linecap="round"/>
+          <rect x="275" y="170" width="28" height="11" fill="#22405E" rx="3"/>
+          <rect x="277" y="178" width="24" height="5" fill="#182E48" rx="2"/>
+          <ellipse cx="289" cy="174" rx="10" ry="5" fill="url(#vLamp)"/>
+          <circle cx="289" cy="174" r="26" fill="#FFD060" opacity="0.06"/>
+          <path d="M281 180 L193 307 L385 307 L297 180 Z" fill="url(#vCone2)"/>
+          <ellipse cx="289" cy="338" rx="78" ry="18" fill="#FFD060" opacity="0.18"/>
+        </svg>
+        <div class="scene-card">
+          <div class="t"><i></i> Объект сдан · г. Смоленск</div>
+          <div class="tags">
+            <span>Уличное освещение</span>
+            <span>3,4 км трассы</span>
+            <span>148 опор</span>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -231,6 +373,11 @@
     <a href="#">Политика обработки персональных данных</a>
   </div>
 </footer>
+
+<a class="fab" href="tel:+74812701267" aria-label="Позвонить">
+  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7A2 2 0 0 1 22 16.9Z"/></svg>
+  Позвонить
+</a>
 
 <script src="js/main.js"></script>
 </body>

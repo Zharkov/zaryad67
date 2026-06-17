@@ -41,6 +41,24 @@
     revealEls.forEach(function (el) { el.classList.add('in'); });
   }
 
+  /* ---------- Активный пункт навигации при прокрутке ---------- */
+  var navSections = document.querySelectorAll('section[id]');
+  var navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+  if (navSections.length && navLinks.length) {
+    function updateActiveLink() {
+      var scrollY = window.scrollY + 120;
+      var current = '';
+      navSections.forEach(function (s) {
+        if (scrollY >= s.offsetTop) current = s.id;
+      });
+      navLinks.forEach(function (a) {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+      });
+    }
+    window.addEventListener('scroll', updateActiveLink, { passive: true });
+    updateActiveLink();
+  }
+
   /* ---------- Бегущие цифры ---------- */
   function animateCount(el) {
     var target = parseFloat(el.getAttribute('data-target'));
@@ -76,6 +94,34 @@
     } else {
       nums.forEach(animateCount);
     }
+  }
+
+  /* ---------- Маска телефона ---------- */
+  var phoneInput = document.getElementById('phone');
+  if (phoneInput) {
+    function maskPhone() {
+      var d = this.value.replace(/\D/g, '');
+      if (d.length && d[0] === '8') d = '7' + d.slice(1);
+      if (d.length && d[0] !== '7') d = '7' + d;
+      d = d.slice(0, 11);
+      var r = '';
+      for (var i = 0; i < d.length; i++) {
+        if      (i === 0) r += '+' + d[i];
+        else if (i === 1) r += ' (' + d[i];
+        else if (i === 4) r += ') ' + d[i];
+        else if (i === 7) r += '-' + d[i];
+        else if (i === 9) r += '-' + d[i];
+        else              r += d[i];
+      }
+      this.value = r;
+    }
+    phoneInput.addEventListener('input', maskPhone);
+    phoneInput.addEventListener('focus', function () {
+      if (!this.value) this.value = '+7 (';
+    });
+    phoneInput.addEventListener('blur', function () {
+      if (this.value === '+7 (') this.value = '';
+    });
   }
 
   /* ---------- Форма заявки (открывает почтовый клиент) ----------

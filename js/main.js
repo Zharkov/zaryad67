@@ -124,19 +124,78 @@
     });
   }
 
-  /* ---------- Форма заявки (открывает почтовый клиент) ----------
-     Чтобы принимать заявки на сервер/в CRM/в Telegram-бота — замените
-     обработчик ниже на отправку через fetch() на ваш бэкенд.        */
+  /* ---------- Кнопка «наверх» ---------- */
+  var toTop = document.getElementById('toTop');
+  if (toTop) {
+    window.addEventListener('scroll', function () {
+      toTop.classList.toggle('visible', window.scrollY > 500);
+    }, { passive: true });
+    toTop.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  /* ---------- Лайтбокс ---------- */
+  var lb = document.createElement('div');
+  lb.className = 'lightbox';
+  lb.innerHTML = '<button class="lightbox-close" aria-label="Закрыть">✕</button><img src="" alt="" />';
+  document.body.appendChild(lb);
+  var lbImg = lb.querySelector('img');
+
+  function openLightbox(src, alt) {
+    lbImg.src = src;
+    lbImg.alt = alt || '';
+    lb.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    lb.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.proj img, .tech-card img').forEach(function (img) {
+    img.addEventListener('click', function () { openLightbox(this.src, this.alt); });
+  });
+  lb.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
+  lb.addEventListener('click', function (e) { if (e.target === lb) closeLightbox(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeLightbox(); });
+
+  /* ---------- Форма заявки → FormSubmit.co ---------- */
   var form = document.getElementById('leadForm');
   if (form) {
     form.addEventListener('submit', function (ev) {
       ev.preventDefault();
-      var n = form.querySelector('[name="name"]').value;
-      var p = form.querySelector('[name="phone"]').value;
-      var m = form.querySelector('[name="task"]').value;
-      var body = encodeURIComponent('Имя/организация: ' + n + '\nТелефон: ' + p + '\nЗадача: ' + m);
-      window.location.href = 'mailto:info@zaryad67.ru?subject=' +
-        encodeURIComponent('Заявка с сайта') + '&body=' + body;
+      var btn = form.querySelector('button[type="submit"]');
+      btn.disabled = true;
+      btn.textContent = 'Отправляем…';
+
+      var data = {
+        name:     form.querySelector('[name="name"]').value,
+        phone:    form.querySelector('[name="phone"]').value,
+        task:     form.querySelector('[name="task"]').value,
+        _subject: 'Заявка с сайта ООО «Заряд»',
+        _template: 'table'
+      };
+
+      fetch('https://formsubmit.co/ajax/zaryadooo@yandex.ru', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data)
+      })
+      .then(function (r) { return r.json(); })
+      .then(function () {
+        form.innerHTML =
+          '<div class="form-success">' +
+            '<div class="form-success-icon">✓</div>' +
+            '<h3>Заявка принята!</h3>' +
+            '<p>Свяжемся с вами в течение рабочего дня.</p>' +
+          '</div>';
+      })
+      .catch(function () {
+        btn.disabled = false;
+        btn.textContent = 'Отправить заявку';
+        alert('Не удалось отправить. Позвоните нам: +7 (900) 226-30-13');
+      });
     });
   }
 })();

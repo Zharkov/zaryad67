@@ -4,18 +4,17 @@
 (function () {
   'use strict';
 
-  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ---------- Бургер-меню ---------- */
-  var burger = document.querySelector('.burger');
-  var menu = document.querySelector('.mobile-menu');
+  const burger = document.querySelector('.burger');
+  const menu = document.querySelector('.mobile-menu');
   if (burger && menu) {
     burger.addEventListener('click', function () {
-      var open = menu.classList.toggle('is-open');
+      const open = menu.classList.toggle('is-open');
       burger.classList.toggle('is-open', open);
       burger.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
-    // Закрываем меню при клике по ссылке
     menu.querySelectorAll('a').forEach(function (a) {
       a.addEventListener('click', function () {
         menu.classList.remove('is-open');
@@ -26,9 +25,9 @@
   }
 
   /* ---------- Появление секций при прокрутке ---------- */
-  var revealEls = document.querySelectorAll('.reveal');
+  const revealEls = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window && !reduceMotion) {
-    var io = new IntersectionObserver(function (entries) {
+    const io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (e.isIntersecting) {
           e.target.classList.add('in');
@@ -42,12 +41,12 @@
   }
 
   /* ---------- Активный пункт навигации при прокрутке ---------- */
-  var navSections = document.querySelectorAll('section[id]');
-  var navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+  const navSections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
   if (navSections.length && navLinks.length) {
     function updateActiveLink() {
-      var scrollY = window.scrollY + 120;
-      var current = '';
+      const scrollY = window.scrollY + 120;
+      let current = '';
       navSections.forEach(function (s) {
         if (scrollY >= s.offsetTop) current = s.id;
       });
@@ -61,17 +60,17 @@
 
   /* ---------- Бегущие цифры ---------- */
   function animateCount(el) {
-    var target = parseFloat(el.getAttribute('data-target'));
-    var decimals = (el.getAttribute('data-decimals') | 0);
-    var duration = 1600;
+    const target = parseFloat(el.getAttribute('data-target'));
+    const decimals = (el.getAttribute('data-decimals') | 0);
+    const duration = 1600;
     if (reduceMotion) { el.textContent = target.toFixed(decimals); return; }
 
-    var start = null;
+    let start = null;
     function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
     function frame(ts) {
       if (!start) start = ts;
-      var p = Math.min((ts - start) / duration, 1);
-      var val = target * easeOutCubic(p);
+      const p = Math.min((ts - start) / duration, 1);
+      const val = target * easeOutCubic(p);
       el.textContent = val.toFixed(decimals);
       if (p < 1) requestAnimationFrame(frame);
       else el.textContent = target.toFixed(decimals);
@@ -79,10 +78,10 @@
     requestAnimationFrame(frame);
   }
 
-  var nums = document.querySelectorAll('.num[data-target]');
+  const nums = document.querySelectorAll('.num[data-target]');
   if (nums.length) {
     if ('IntersectionObserver' in window) {
-      var statObserver = new IntersectionObserver(function (entries) {
+      const statObserver = new IntersectionObserver(function (entries) {
         entries.forEach(function (e) {
           if (e.isIntersecting) {
             animateCount(e.target);
@@ -97,15 +96,15 @@
   }
 
   /* ---------- Маска телефона ---------- */
-  var phoneInput = document.getElementById('phone');
+  const phoneInput = document.getElementById('phone');
   if (phoneInput) {
     function maskPhone() {
-      var d = this.value.replace(/\D/g, '');
+      let d = this.value.replace(/\D/g, '');
       if (d.length && d[0] === '8') d = '7' + d.slice(1);
       if (d.length && d[0] !== '7') d = '7' + d;
       d = d.slice(0, 11);
-      var r = '';
-      for (var i = 0; i < d.length; i++) {
+      let r = '';
+      for (let i = 0; i < d.length; i++) {
         if      (i === 0) r += '+' + d[i];
         else if (i === 1) r += ' (' + d[i];
         else if (i === 4) r += ') ' + d[i];
@@ -125,7 +124,7 @@
   }
 
   /* ---------- Кнопка «наверх» ---------- */
-  var toTop = document.getElementById('toTop');
+  const toTop = document.getElementById('toTop');
   if (toTop) {
     window.addEventListener('scroll', function () {
       toTop.classList.toggle('visible', window.scrollY > 500);
@@ -136,11 +135,11 @@
   }
 
   /* ---------- Лайтбокс ---------- */
-  var lb = document.createElement('div');
+  const lb = document.createElement('div');
   lb.className = 'lightbox';
   lb.innerHTML = '<button class="lightbox-close" aria-label="Закрыть">✕</button><img src="" alt="" />';
   document.body.appendChild(lb);
-  var lbImg = lb.querySelector('img');
+  const lbImg = lb.querySelector('img');
 
   function openLightbox(src, alt) {
     lbImg.src = src;
@@ -161,19 +160,19 @@
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeLightbox(); });
 
   /* ---------- Форма заявки → FormSubmit.co ---------- */
-  var form = document.getElementById('leadForm');
+  const form = document.getElementById('leadForm');
   if (form) {
     form.addEventListener('submit', function (ev) {
       ev.preventDefault();
-      var btn = form.querySelector('button[type="submit"]');
+      const btn = form.querySelector('button[type="submit"]');
       btn.disabled = true;
       btn.textContent = 'Отправляем…';
 
-      var data = {
-        name:     form.querySelector('[name="name"]').value,
-        phone:    form.querySelector('[name="phone"]').value,
-        task:     form.querySelector('[name="task"]').value,
-        _subject: 'Заявка с сайта ООО «Заряд»',
+      const data = {
+        name:      form.querySelector('[name="name"]').value,
+        phone:     form.querySelector('[name="phone"]').value,
+        task:      form.querySelector('[name="task"]').value,
+        _subject:  'Заявка с сайта ООО «Заряд»',
         _template: 'table'
       };
 

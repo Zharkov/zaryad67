@@ -8,7 +8,7 @@
   --bg-alt:#F4F7FB;
   --ink:#15202E;          /* заголовки */
   --body:#45556A;         /* основной текст */
-  --muted:#7A8AA0;        /* подписи */
+  --muted:#5E6B7D;        /* подписи — контраст 5.3:1 на белом (WCAG AA) */
   --primary:#1B5FE0;      /* электрический синий */
   --primary-dark:#1547AA;
   --accent:#FFC02E;       /* энергия / «заряд» */
@@ -31,6 +31,16 @@ a{color:inherit;text-decoration:none}
 img{max-width:100%;display:block}
 h1,h2,h3,h4{font-family:"Rubik",sans-serif;color:var(--ink);line-height:1.15;font-weight:600}
 .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+
+/* Доступность: фокус с клавиатуры */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible{
+  outline:3px solid var(--primary);
+  outline-offset:3px;
+  border-radius:4px;
+}
 
 .eyebrow{
   font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
@@ -146,8 +156,6 @@ h1,h2,h3,h4{font-family:"Rubik",sans-serif;color:var(--ink);line-height:1.15;fon
 .proj{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:#fff;transition:transform .2s,box-shadow .25s}
 .proj:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
 .proj img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
-.proj .ph{aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:13px;letter-spacing:.06em;text-transform:uppercase;
-  background:repeating-linear-gradient(45deg,#eef2f8 0 16px,#f6f9fc 16px 32px)}
 .proj .body{padding:20px 22px}
 .proj .body span{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--primary)}
 .proj .body h3{font-size:18px;font-weight:600;margin-top:6px}
@@ -172,13 +180,11 @@ h1,h2,h3,h4{font-family:"Rubik",sans-serif;color:var(--ink);line-height:1.15;fon
 
 /* ---------- КОНТАКТЫ ---------- */
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.contact-h2{font-size:clamp(26px,3.6vw,40px);font-weight:700;margin-bottom:14px}
 .c-list{margin-top:26px;display:grid;gap:22px}
 .c-item .k{font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);font-weight:600}
 .c-item .v{font-family:"Rubik";font-weight:600;font-size:21px;color:var(--ink);margin-top:3px}
 .c-item .v a:hover{color:var(--primary)}
-.messengers{display:flex;gap:12px;margin-top:28px}
-.messengers a{border:1px solid var(--line);border-radius:10px;padding:11px 20px;font-weight:600;font-size:14px;color:var(--body);transition:.2s}
-.messengers a:hover{border-color:var(--primary);color:var(--primary)}
 .form{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:32px;box-shadow:var(--shadow);display:grid;gap:16px}
 .form .field{display:grid;gap:7px}
 .form label{font-size:13px;font-weight:600;color:var(--ink)}
